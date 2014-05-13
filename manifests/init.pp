@@ -257,7 +257,7 @@ class logstash(
       # use staging for ordering
 
       if !(defined(Stage['setup'])) {
-         stage { 'setup':  before => Stage['main'] }
+        stage { 'setup':  before => Stage['main'] }
       }
 
       class { 'logstash::repo':

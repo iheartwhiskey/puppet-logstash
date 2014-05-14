@@ -122,7 +122,6 @@ define logstash::service::init{
 
   }
 
-<<<<<<< HEAD
   if ($logstash::status == 'supervisord') {
     Class['supervisord']
     ->
@@ -137,7 +136,7 @@ define logstash::service::init{
         autorestart     => true,
     }
   }
-=======
+  
   file { "/etc/init/${name}.conf":
     ensure => 'absent',
     before => Service[$name],
@@ -148,7 +147,6 @@ define logstash::service::init{
     default  => 'init'
   }
 
->>>>>>> 338dbeabb6a37b9d5049e4bb2f117509acc493b6
   # action
   service { $name:
     ensure     => $service_ensure,

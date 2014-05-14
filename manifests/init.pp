@@ -193,7 +193,7 @@ class logstash(
   }
 
   # service status
-  if ! ($status in [ 'enabled', 'disabled', 'running', 'unmanaged' ]) {
+  if ! ($status in [ 'enabled', 'disabled', 'running', 'unmanaged', 'supervisord' ]) {
     fail("\"${status}\" is not a valid status parameter value")
   }
 

@@ -1,0 +1,8 @@
+input {
+    lumberjack {
+        port => <%= lfs_port %> 
+        ssl_certificate => "<%= lfs_certificate %>"
+        ssl_key => "<%= lfs_key %>"
+        type => "lumberjack"
+    }
+}

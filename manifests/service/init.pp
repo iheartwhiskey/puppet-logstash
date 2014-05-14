@@ -20,7 +20,6 @@
 # * Richard Pijnenburg <mailto:richard.pijnenburg@elasticsearch.com>
 #
 define logstash::service::init{
-
   #### Service management
 
   # set params: in operation
@@ -48,6 +47,10 @@ define logstash::service::init{
         $service_ensure = undef
         $service_enable = false
       }
+      'supervisord': {
+        $service_ensure = undef
+        $service_enable = false
+      }
       # unknown status
       # note: don't forget to update the parameter check in init.pp if you
       #       add a new or change an existing status.
@@ -72,7 +75,7 @@ define logstash::service::init{
   }
 
 
-  if ( $logstash::status != 'unmanaged' ) {
+  if ( $logstash::status != 'unmanaged' and $logstashforwarder::status != 'supervisord') {
 
     # defaults file content. Either from a hash or file
     if ($logstash::init_defaults_file != undef) {
@@ -119,6 +122,22 @@ define logstash::service::init{
 
   }
 
+<<<<<<< HEAD
+  if ($logstash::status == 'supervisord') {
+    Class['supervisord']
+    ->
+    supervisord::program {'logstash':
+        command         => "${logstash::installpath}/bin/logstash -f ${logstash::installpath}/conf.d/",
+        user            => $logstash_user,
+        priority        => '100',
+        environment     => {
+            'PATH'      =>  '/bin:/sbin:/usr/bin:/usr/sbin/',
+        },
+        autostart       => true,
+        autorestart     => true,
+    }
+  }
+=======
   file { "/etc/init/${name}.conf":
     ensure => 'absent',
     before => Service[$name],
@@ -129,6 +148,7 @@ define logstash::service::init{
     default  => 'init'
   }
 
+>>>>>>> 338dbeabb6a37b9d5049e4bb2f117509acc493b6
   # action
   service { $name:
     ensure     => $service_ensure,

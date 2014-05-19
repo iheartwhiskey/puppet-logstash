@@ -126,7 +126,7 @@ define logstash::service::init{
     Class['supervisord']
     ->
     supervisord::program {'logstash':
-        command         => "${logstash::installpath}/bin/logstash -f ${logstash::installpath}/conf.d/",
+        command         => "${logstash::installpath}/bin/logstash -f ${logstash::installpath}/conf.d/ -- web",
         user            => $logstash_user,
         priority        => '100',
         environment     => {

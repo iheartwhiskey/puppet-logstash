@@ -1,0 +1,7 @@
+input {
+file {
+    type         => "syslog"
+    path         => [ "/var/log/messages" ]
+    sincedb_path => "/var/log/logstash/.sincedb"
+  }
+}

@@ -1,7 +1,7 @@
 output {
     elasticsearch { 
-        embedded           => true
-        embedded_http_port => 9200
-        host               => "10.240.0.200"
+        embedded           => <%= @embedded %>
+        embedded_http_port => <%= @embedded_http_port %>
+        host               => "<%= @host %>"
     }
 }

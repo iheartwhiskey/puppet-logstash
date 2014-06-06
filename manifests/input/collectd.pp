@@ -18,5 +18,4 @@ define logstash::input::collectd(
         action => 'accept'
       }
     }
-
-
+}

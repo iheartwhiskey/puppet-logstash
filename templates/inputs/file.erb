@@ -1,7 +1,7 @@
 input {
   file {
     type           => "<%= @type %>"
-    path           => [<% @path.each_with_index do |paths, i| -%>"<%= paths -%>"<%= ',' if i < (path.size - 1)%><% end -%>]
+    path           => [<% @path.each_with_index do |paths, i| -%>"<%= paths -%>"<%= ',' if i < (@path.size - 1)%><% end -%>]
     sincedb_path   => "<%= @sincedb_path %>"
     start_position => "<%= @start_position %>"
   }

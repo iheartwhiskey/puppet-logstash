@@ -75,7 +75,7 @@ define logstash::service::init{
   }
 
 
-  if ( $logstash::status != 'unmanaged' and $logstashforwarder::status != 'supervisord') {
+  if ( $logstash::status != 'unmanaged' and $logstash::status != 'supervisord') {
 
     # defaults file content. Either from a hash or file
     if ($logstash::init_defaults_file != undef) {
